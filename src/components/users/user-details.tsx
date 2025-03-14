@@ -8,10 +8,14 @@ import {
 } from "@/components/ui/dialog";
 
 import { User as UserIcon } from "lucide-react";
-import { useUserDetails } from "@/api/hooks";
+
+import { UsersContext } from "@/context/users.context";
+import { use } from "react";
 
 export function UserDetails({ id }: { id: number }) {
-  const { data } = useUserDetails(id);
+  const usersContext = use(UsersContext);
+  const data = usersContext?.fetchUserDatails(id);
+  console.log("fetchUserDatails", data);
 
   return (
     <Dialog>
