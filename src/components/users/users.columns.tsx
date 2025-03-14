@@ -1,8 +1,8 @@
-import { User } from "@/types/user.types";
+import { UserRow } from "@/types/user.types";
 import { ColumnDef } from "@tanstack/react-table";
 import { UserDetails } from "./user-details";
 
-export const usersColumns: ColumnDef<Partial<User>>[] = [
+export const usersColumns: ColumnDef<UserRow>[] = [
   {
     header: "name",
     accessorKey: "name",
@@ -19,7 +19,7 @@ export const usersColumns: ColumnDef<Partial<User>>[] = [
     header: "id",
     accessorKey: "id",
     cell: ({ row }) => {
-      return <UserDetails user={row.original} />;
+      return <UserDetails id={row.original.id} />;
     },
   },
 ];

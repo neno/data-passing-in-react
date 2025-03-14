@@ -8,8 +8,11 @@ import {
 } from "@/components/ui/dialog";
 
 import { User as UserIcon } from "lucide-react";
-import { User } from "@/types/user.types";
-export function UserDetails({ user }: { user: Partial<User> }) {
+import { useUserDetails } from "@/api/hooks";
+
+export function UserDetails({ id }: { id: number }) {
+  const { data } = useUserDetails(id);
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -19,9 +22,9 @@ export function UserDetails({ user }: { user: Partial<User> }) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>User Details {user.id}</DialogTitle>
+          <DialogTitle>User Details {id}</DialogTitle>
         </DialogHeader>
-        <pre>{JSON.stringify(user, null, 2)}</pre>
+        <pre>{JSON.stringify(data, null, 2)}</pre>
       </DialogContent>
     </Dialog>
   );

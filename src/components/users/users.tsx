@@ -1,8 +1,8 @@
-import { useUsers } from "@/api/hooks";
+import { useUsersList } from "@/api/hooks";
 import { UsersTable } from "./users.table";
 
 export function Users() {
-  const { data } = useUsers();
+  const { data } = useUsersList();
   if (!data) return <div>Loading...</div>;
   return <UsersTable data={data} />;
 }
