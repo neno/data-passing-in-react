@@ -53,7 +53,6 @@ export const UsersTable = ({ data }: { data: UserRow[] }) => {
           ))}
         </TableBody>
       </Table>
-      <pre>{JSON.stringify(table.getRowModel().rows, null, 2)}</pre>
     </>
   );
 };

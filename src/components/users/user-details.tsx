@@ -16,8 +16,8 @@ export function UserDetails({ id }: { id: number }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">
-          <UserIcon />
+        <Button variant="outline" title="Zeilendetails anzeigen">
+          <UserIcon aria-hidden="true" data-testid="icon" />
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

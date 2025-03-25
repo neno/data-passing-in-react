@@ -1,0 +1,93 @@
+export interface ProcessingInfoRaw {
+  transmissionId: number;
+  correlationReference: string;
+  transmissionReference: string;
+  documentReference: string;
+  mimeType: string;
+  documentDefinitionNameDe: string;
+  documentDefinitionNameFr: string;
+  documentDefinitionNameIt: string;
+  technicalProductName: string;
+  productNameDe: string;
+  productNameFr: string;
+  productNameIt: string;
+  senderId: number;
+  senderDisplayName: string;
+  fileSize: number;
+  mode: string;
+  createdDate: string;
+  items: ProcessingInfoItemRaw[];
+  status: string;
+  type: string;
+}
+
+export interface ProcessingInfoItemRaw {
+  id: number;
+  receiverId: number;
+  receiverDisplayName: string;
+  fetchedDate: string | null;
+  status: string;
+  deliveryMode: string;
+  participantType: string | null;
+  collectDate: string | null;
+}
+
+export type ProcessingInfoDataRaw = ProcessingInfoRaw[];
+
+export type ProcessingInfoTableData = ProcessingInfoTableRowData[];
+
+export type ProcessingInfoTableRowData = Pick<
+  ProcessingInfoRaw,
+  | "transmissionId"
+  | "type"
+  | "createdDate"
+  | "documentReference"
+  | "correlationReference"
+  | "senderDisplayName"
+  | "mode"
+  | "status"
+> & {
+  productName: string;
+  documentDefinitionName: string;
+};
+
+export type ProcessingInfoTableRowData2 = {
+  transmissionId: number;
+  type: string;
+  createdDate: string;
+  productName: string;
+  documentReference: string;
+  correlationReference: string;
+  documentDefinitionName: string;
+  sender: string;
+  mode: string;
+  status: string;
+};
+
+export type ProcessingInfoDetailsData = {
+  items: ProcessingInfoDetailsItemData[];
+  document: ProcessingInfoDetailsDocumentData;
+};
+
+export type ProcessingInfoDetailsItemData = Pick<
+  ProcessingInfoItemRaw,
+  "receiverDisplayName" | "deliveryMode" | "fetchedDate" | "status"
+>;
+
+export type ProcessingInfoDetailsItemData2 = {
+  receiverDisplayName: string;
+  deliveryMode: string;
+  fetchDate: string | null;
+  status: string;
+};
+
+export type ProcessingInfoDetailsDocumentData = Pick<
+  ProcessingInfoRaw,
+  "fileSize" | "mode"
+>;
+
+export type ProcessingInfoDetailsDocumentData2 = {
+  fileSize: number;
+  //documentStatus: string
+  mode: string;
+};
